@@ -36,6 +36,14 @@ export function removeExpense({ id } = {}) {
     }
 };
 
+export function startRemoveExpense({ id } = {}) {
+    return (dispatch) => {
+        return firebase.database().ref(`expenses/${id}`).remove().then(() => {
+            dispatch(removeExpense({ id }))
+        })
+    }    
+}
+
 // EDIT_EXPENSE
 export function editExpense(id, updates) {
     return {
