@@ -53,10 +53,10 @@ export function editExpense(id, updates) {
     }
 };
 
-export function startEditExpense({ id, updates }) {
+export function startEditExpense(id, updates ) {
     return (dispatch) => {
         return firebase.database().ref(`expenses/${id}`).update(updates).then(() => {
-            dispatch(editExpense({ id, updates}));
+            dispatch(editExpense(id, updates));
         });
     }
 };
