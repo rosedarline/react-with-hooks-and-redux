@@ -13,7 +13,9 @@ const firebaseConfig = {
  
 
   firebase.initializeApp(firebaseConfig);
-  export { firebase };
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+  export { firebase, googleAuthProvider };
   
 
   // firebase.database().ref("expenses")
