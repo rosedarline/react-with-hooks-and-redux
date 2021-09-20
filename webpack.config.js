@@ -1,10 +1,10 @@
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const webpack  = require("webpack");
+const webpack = require("webpack");
 
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
-if(process.env.NODE_ENV === "test") {
+if (process.env.NODE_ENV === "test") {
     require("dotenv").config({ path: ".env.test" });
 } else if (process.env.NODE_ENV === "development") {
     require("dotenv").config({ path: ".env.development" });
@@ -15,12 +15,12 @@ module.exports = (env) => {
     const CSSExtract = new ExtractTextPlugin("styles.css");
 
     return {
-        entry: "./src/app.js",
+        entry: ["babel-polyfill", "./src/app.js"],
         output: {
             path: path.join(__dirname, "public", "dist"),
             filename: "bundle.js"
         },
-        module:{
+        module: {
             rules: [{
                 loader: "babel-loader",
                 test: /\.js$/,
